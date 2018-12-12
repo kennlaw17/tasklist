@@ -1,123 +1,32 @@
 
 <!DOCTYPE html>
 <html>
-    
-         <!------ style here ------>
-        <style>
-              
-    body {
-	width: 100wh;
-	height: 90vh;
-	color: #fff;
-	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
-	background-size: 400% 400%;
-	-webkit-animation: Gradient 20s ease infinite;
-	-moz-animation: Gradient 20s ease infinite;
-	animation: Gradient 20s ease infinite;
-}
 
-@-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-@-moz-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-    
-@keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-    
-        text-align: center;
-        font-family: 'Open Sans';
-        font-size: 20pt;
-            
-        
-        </style>
-    <!---------- divider -------->
     <head>
         <title>Task Lister</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script>
-            // task object
-            function Task(name, time) {
-                this.name = name;
-                this.time = time;
-                this.done = false;
-
-                this.render = function() {
-                    var list = "<li>" + this.name + " on " + this.time + " : " + this.done + "</li>";
-                    $("#task-list").append(list)
-                }
-            }
-            
-
-            //// list of tasks ////
-            var tasks = [];
-
-            //// handlers ////
-            $(document).ready(function() {
-                $("#task-submit").on("click", function() {
-                    var name = $("#task-name");
-                    var time = $("#datetime12");
-                    var task = new Task(name.val(), time.val());
-
-                    // update list
-                    $("#task-list").empty();
-                    tasks.push(task)
-                    tasks.map((x) => x.render());
-                    console.log(tasks);
-
-                    // clear input
-                    name.val('');
-                    time.val('');
-                });
-            });
-            
-         ///combodate///   
-        $(function(){
-        $('#datetime12').combodate();  
-          });
-        </script>
-   
+        <link rel="stylesheet" href="style.css", type="text/css">
+        <link rel="stylesheet" href="fonts.css", type="text/css">
+        <script src="jquery-3.3.1.min.js"></script>
+        <script src="script.js"></script>
     </head>
     <body>
-    <div class="inputfield">
-        <h1>Enter Your Task</h1>
-        <div id="form">
-            <input id="task-name" placeholder="Enter your task"></input> 
-            <input type="time" placeholder="DD/MM/YYYY HH:MM AM"id="datetime12" data- format="DD-MM-YYYY hh:mm a" data-template="DD / MM / YYYY  hh : mm a" name="datetime" value="DD/MM/YYYY h:mm pm">
-            <button id="task-submit" onclick="(this)">Add</button>
+        <div class="inputfield">
+            <h1>Enter Your Task</h1>
+            <div id="form">
+                <input id="task-name" placeholder="Enter your task"></input>
+                <input type="time"
+                       placeholder="DD/MM/YYYY HH:MM AM"
+                       id="task-time"
+                       data- format="DD-MM-YYYY hh:mm a"
+                       data-template="DD / MM / YYYY  hh : mm a"
+                       name="datetime">
+                <button id="task-submit">Add</button>
+            </div>
         </div>
-      </div>
-    
+
         <div id="tasks">
             <ul id="task-list">
-            </ul> 
+            </ul>
         </div>
     </body>
 </html>
